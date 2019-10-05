@@ -1,0 +1,2 @@
+#!/bin/bash
+sort | uniq -c | sort -nr | ( [ -z "$1" ] && cat || head $* )

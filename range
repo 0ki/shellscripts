@@ -1,0 +1,10 @@
+#!/bin/bash
+[ -z "$1" ] && r=1 || r="$1"
+r=$(( 0 + $r ))
+[ $r -lt 1 ] && r=1
+for((i=0;i<$(( 10 ** ($r -1 )));i++)); do
+printf "%0"$r"d\n" $i
+done
+for((i=$(( 10 ** ($r -1 )));i<$(( 10 ** $r ));i++)); do
+echo $i
+done
