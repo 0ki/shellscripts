@@ -1,0 +1,14 @@
+#!/usr/bin/php
+<?php
+$in=fopen('php://stdin',"r");
+$d=array();
+while($z=fgets($in)){
+ @$d[$z]++;
+}
+
+if($argc>1 and ($argv[1]=='c' or $argv[1]=='-c'))
+	foreach($d as $a=>$b)
+		echo ("$b $a");
+else
+	foreach($d as $a=>$b)
+		echo ("$a");

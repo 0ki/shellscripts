@@ -1,0 +1,2 @@
+#!/bin/sh
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -oKexAlgorithms=+diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss -oPubkeyAcceptedKeyTypes=+ssh-dss $*

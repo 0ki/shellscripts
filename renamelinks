@@ -1,0 +1,20 @@
+#!/bin/bash
+
+[ -z "$2" ] && echo Usage: $0 perlexpr files && exit 1
+expression="$1"
+
+b="x"
+while true; do
+	shift
+	b="$1"
+	[ "$b" == "" ] && break
+	pnt="$(readlink $b)"
+	[ -z "$pnt" ] && continue
+	npnt="$(echo "$pnt" | sed "$expression")"
+	[ "$pnt" == "$npnt" ] && continue
+	[ -z "$npnt" ] && continue
+	[ ! -f "$npnt" ] && echo $npnt does not exist. skipping. && continue
+	rm $b
+	ln -s $npnt $b
+	echo $b now points to $npnt
+done
