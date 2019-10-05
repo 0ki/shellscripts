@@ -1,0 +1,3 @@
+#!/usr/bin/php
+<?php
+echo gzinflate(file_get_contents('php://stdin'));
