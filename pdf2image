@@ -1,0 +1,25 @@
+#!/bin/bash
+set -e
+ext=jpg
+samp=200
+qual=90
+
+[ -z "$1" ] && echo fail && exit 1
+[ -z "$2" ] && a="i-$1" || a="$2"
+[ ! -f "$1" ] && echo No file found && exit 1
+tmp=pdf-img-$$
+convert -density $samp -- "$1" -quality $qual $tmp.$ext
+echo -n Press enter to continue...
+read
+convert -- $(ls -v $tmp*.$ext) "pdf_$a"
+#convert -- $(ls -v $tmp*.$ext) -density ${samp}x${samp} -units PixelsPerInch \
+#      -resize $((samp*827/100))x$((samp*1169/100)) \
+#      -repage $((samp*827/100))x$((samp*1169/100)) "pdf_$a"
+
+
+rm -- $tmp*.$ext
+
+exiftool -q -overwrite_original -all:all= "pdf_$a"
+qpdf --linearize "pdf_$a" "$a"
+rm -- "pdf_$a"
+

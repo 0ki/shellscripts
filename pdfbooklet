@@ -1,0 +1,26 @@
+#!/bin/bash
+[ -z "$1" ] && echo Usage: $0 input.pdf && exit 1
+input="$1"
+pages="$(pdftk "$input" dump_data | grep ^NumberOfPages:|cut -d \  -f 2)"
+[ -z "$pages" ] && echo Not a PDF document. && exit 2
+[ $pages -lt 1 ] && echo Unable to detect number of pages. && exit 2
+
+midpoint=$(( ($pages + 1) / 2 ))
+
+BOOK2="$(
+	for ((p=1;p<=midpoint;p=p+2)); do
+		echo -n $(( $pages - $p + 1 )) $p \ 
+	done
+)"
+
+
+BOOK1="$(
+	for ((p=midpoint;p>=2;p=p-2)); do
+		echo -n $p $(( $pages - $p + 1 ))\ 
+	done
+)"
+
+pdftk "$input" cat $BOOK1 output "BOOK1-$input"
+pdftk "$input" cat $BOOK2 output "BOOK2-$input"
+
+

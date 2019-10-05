@@ -1,0 +1,4 @@
+#!/bin/bash
+convert "$1" "$1$$.pdf"
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$1" "$1$$.pdf"
+rm "$1$$.pdf"

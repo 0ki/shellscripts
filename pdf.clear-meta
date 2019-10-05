@@ -1,0 +1,6 @@
+#!/bin/bash
+exiftool -all:all= "$1"
+rm "$1_original"
+qpdf --linearize "$1" "$1$$"
+cat "$1$$" > "$1"
+rm "$1$$"
