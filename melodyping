@@ -1,0 +1,2 @@
+#!/bin/bash
+ping $*|awk -F[=\ ] '/me=/{t=$(NF-1);f=3000-14*log(t^20);c="play -q -n synth 0.3 sin " f " sin %-10 sin %+10 2> /dev/null";print $0;system(c)}'

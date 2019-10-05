@@ -1,0 +1,26 @@
+#!/bin/bash
+delay=30
+
+[ -z "$1" ] && echo Usage: $0 command to monitor && exit 1
+
+answer="$(echo $* | /bin/bash)"
+current="$answer"
+
+echo "Monitoring command $* for change"
+echo "$answer"
+
+while [ "$current" == "$answer" ]; do
+	sleep $delay
+	current="$(echo $* | /bin/bash)"
+done
+
+diff <(echo "$answer") <(echo "$current")
+echo ALERT: CHANGE DETECTED
+
+while [ true ] ; do
+	for((x=0;x<10;x++)); do
+		play -q -n -t alsa synth 0.2 sin 1000
+		play -q -n -t alsa synth 0.2 sin 500
+	done
+	sleep $delay
+done

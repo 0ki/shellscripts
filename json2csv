@@ -1,0 +1,43 @@
+#!/usr/bin/python
+import sys,csv,json
+import unicodecsv as csv
+
+def flattenjson( b, delim ):
+	val = {}
+	for i in b:
+		if isinstance( b[i], dict ) :
+			get = flattenjson( b[i], delim )
+			#print get
+			try:
+				int(i)
+				if isinstance(val, dict):
+					val=[]
+				get['_id']=i
+				val.append(get)
+			except:
+				if isinstance(get, list):
+					val[i] = get
+				else:
+					for j in get:
+						name = j
+						val[ i + delim + name ] = get[j] 
+		else:
+			val[i] = b[i]
+
+	return val
+
+input = json.load(sys.stdin)
+if type(input) is dict:
+	input = [input]
+input = map( lambda x: flattenjson( x, "." ), input )
+
+
+columns = [ x for row in input for x in row.keys() ]
+columns = list( set( columns ) )
+
+csv_w = csv.writer( sys.stdout)
+csv_w.writerow( columns )
+
+for i_r in input:
+	csv_w.writerow( map( lambda x: i_r.get( x, "" ), columns ) )
+	
