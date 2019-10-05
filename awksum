@@ -1,0 +1,3 @@
+#!/bin/bash
+[ -z "$1" ] && n=1 || n=$1
+awk '{x=x+$'$n'} END {print x}'
