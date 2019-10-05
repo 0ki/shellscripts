@@ -1,0 +1,31 @@
+#!/bin/bash
+
+bad=$(( $$ + 1 ))
+PID=$(pgrep -x shqueue |grep -v "^$bad$" |grep -vE "^$$$" )
+if [ -z "$PID" ]; then
+
+function exitf {
+ rm $FIFO
+}
+
+trap exitf EXIT
+
+set -e
+fn=$$
+FIFO=/tmp/sq$fn
+mkfifo $FIFO
+set +e
+
+echo To submit commands, run this again from elsewhere.
+while true; do
+	cat $FIFO | tee /dev/stderr | bash
+	echo pipe gone, restarting
+done
+
+else
+ FI=/tmp/sq$PID
+ [ ! -p "$FI" ] && echo not a pipe && exit
+ echo Enter bash commands one per line. ^D to finish
+ cat > $FI
+fi
+
