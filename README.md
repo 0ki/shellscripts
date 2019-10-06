@@ -7,7 +7,7 @@ Most of them are just a verbatim dump of what I'm using on my system(s). Simply 
 
 ## List of scripts and what they do
 This section is included because it may be impossible to understand what some of they do by simply looking at them.
-* `aslr-off <binary>` launches binary with ASLR disabled
+* `aslr-off <command>` launches command with ASLR disabled
 * `awkrc` swaps first and second column (and removes the rest)
 * `awksum [n]` outputs the decimal sum of first column (or n<sup>th</sup>) column
 * `deflate` inflates deflated content
@@ -20,8 +20,8 @@ This section is included because it may be impossible to understand what some of
 * `pdfbooklet <file.pdf>` prepares file.pdf to be printed as a book (two-sided); BOOK1-file.pdf is to be printed on one side and BOOK2-file.pdf on the other side of the paper stack
 * `pdf.clear-meta <file.pdf>` removes metadata from file.pdf overwriting it
 * `pdf.convert_from_iOS` converts iOS Keynote generated pdf file so that loading it doesn't take forever; overwrites original
-* `range <n>` generates all n-digit numbers from 000...000 to 999...999; like `seq`, but prints "004" instead of "4"
-* `renamelinks <perlexpr> <files ..>` takes `rename` syntax, but instead of renaming the file, changes the symlink string
+* `range <n>` generates all n-digit numbers from 000...000 to 999...999; like `seq` but prints "004" instead of "4"
+* `renamelinks <perlexpr> <files ..>` takes `rename` syntax but changes the symlink string instead of renaming the file
 * `rir2nmap` converts whois inetnum/NetRange/etc. output (e.g. "8.0.0.0 - 8.127.255.255") to format that nmap can take as a parameter (e.g. 8-8.0-127.0-255.0-255)
 * `sftp-once [params] [user@]<host>` makes sftp connection to host without verifying or saving keys
 * `shqueue` asynchronously executes long-running shell commands one-by-one; first instance will become the server, the others will be clients
