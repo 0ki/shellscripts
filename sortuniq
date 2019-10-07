@@ -2,13 +2,13 @@
 <?php
 $in=fopen('php://stdin',"r");
 $d=array();
-while($z=fgets($in)){
- @$d[$z]++;
-}
+while($z=fgets($in))
+	 @$d[$z]++;
 
 if($argc>1 and ($argv[1]=='c' or $argv[1]=='-c'))
-	foreach($d as $a=>$b)
-		echo ("$b $a");
+{
+        array_walk($d, function(&$a, $b) {$a = "$b $a";});
+        echo implode('', $d);
+}
 else
-	foreach($d as $a=>$b)
-		echo ("$a");
+        echo implode('', array_keys($d));
