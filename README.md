@@ -34,3 +34,4 @@ This section is included because it may be impossible to understand what some of
 * `unbuffer <command>` disables output buffering for commands that can't do that natively
 * `urldecode` decodes URL encoded characters (RFC3986)
 * `xargs1 [options] <command>` executes command with parameters taken from input; alias for `xargs -L1`
+* `xident` prints the most useful info about an X window selected with your mouse

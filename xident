@@ -1,0 +1,4 @@
+#!/bin/bash
+d="$(xprop)"
+echo "window name:$(echo "$d" | grep ^_NET_WM_NAME | cut -d= -f 2-)"
+echo "cmd line:    \"$(ps -o comm= $(echo "$d" | grep ^_NET_WM_PID  | cut -d= -f 2))\""
