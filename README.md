@@ -23,6 +23,7 @@ This section is included because it may be impossible to understand what some of
 * `range <n>` generates all n-digit numbers from 000...000 to 999...999; like `seq` but prints "004" instead of "4"
 * `renamelinks <perlexpr> <files ..>` takes `rename` syntax but changes the symlink string instead of renaming the file
 * `rir2nmap` converts whois inetnum/NetRange/etc. output (e.g. "8.0.0.0 - 8.127.255.255") to format that nmap can take as a parameter (e.g. 8-8.0-127.0-255.0-255)
+* `selcol <n1,n2,n3>` prints only selected columns (alias for awk '{print $n1,$n2,$n3}')
 * `sftp-once [params] [user@]<host>` makes sftp connection to host without verifying or saving keys
 * `shqueue` asynchronously executes long-running shell commands one-by-one; first instance will become the server, the others will be clients
 * `skiprows <n>` skip first n rows
