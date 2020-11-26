@@ -2,9 +2,17 @@
 [ -z "$1" ] && echo Usage: $0 basedir && exit 1
 basedir="$1"
 mkdir -p "$basedir"
+good=0
+bad=0
+skip=0
 while read line; do
+
+ [ -z "$(echo -n "$line" | grep -v "^\.\.$" | grep -v "/\.\.$" | grep -v "/\.\./")" ] && echo Skipping \'"$line"\' for security reasons && skip=$((skip + 1)) && continue
+
  lastchar="$(echo -n "$line" | tail -c1)"
  mkdir -p "$(dirname "$basedir/$line")"
  [ "$lastchar" == "/" ] && mkdir -p "$basedir/$line" || touch "$basedir/$line"
+ [ $? -eq 0 ] && good=$(( $good + 1 )) || bad=$(( $bad + 1))
 done
 
+echo Created $good paths, $skip skipped, $bad errors.
