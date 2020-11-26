@@ -1,0 +1,10 @@
+#!/bin/bash
+[ ! -r "$1" ] && echo Usage: $0 file.vdi && exit 1
+set -e
+sudo rmmod nbd
+sudo modprobe nbd max_part=16
+sudo qemu-nbd -c /dev/nbd0 $1
+echo Press any key to end when you have unmounted.
+read
+
+sudo qemu-nbd -d /dev/nbd0

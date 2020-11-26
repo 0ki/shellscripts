@@ -1,0 +1,10 @@
+#!/bin/bash
+[ -z "$1" ] && echo Usage: $0 basedir && exit 1
+basedir="$1"
+mkdir -p "$basedir"
+while read line; do
+ lastchar="$(echo -n "$line" | tail -c1)"
+ mkdir -p "$(dirname "$basedir/$line")"
+ [ "$lastchar" == "/" ] && mkdir -p "$basedir/$line" || touch "$basedir/$line"
+done
+

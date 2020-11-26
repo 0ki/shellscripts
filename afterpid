@@ -1,0 +1,13 @@
+#!/bin/bash
+[ -z "$2" ] && echo "Usage: $0 <pid> <command>" && exit 1
+pid="$1"
+shift
+
+[ -z "$(ps -o pid= "$pid")" ] && echo "PID not found." && exit 2
+echo "Waiting for PID to stop before executing."
+
+while [ ! -z "$(ps -o pid= "$pid")" ]; do
+	sleep 1
+done
+$*
+
