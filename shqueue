@@ -4,25 +4,25 @@ bad=$(( $$ + 1 ))
 PID=$(pgrep -x shqueue |grep -v "^$bad$" |grep -vE "^$$$" )
 if [ -z "$PID" ]; then
 
-[ ! -z "$1" ] && echo Main program not running. Please start with no parameters && exit 0
+ [ ! -z "$1" ] && echo Main program not running. Please start with no parameters && exit 0
 
-function exitf {
- rm $FIFO
-}
+ function exitf {
+  rm $FIFO
+ }
 
-trap exitf EXIT
+ trap exitf EXIT
 
-set -e
-fn=$$
-FIFO=/tmp/sq$fn
-mkfifo $FIFO
-set +e
+ set -e
+ fn=$$
+ FIFO=/tmp/sq$fn
+ mkfifo $FIFO
+ set +e
 
-echo To submit commands, run this again from elsewhere.
-while true; do
-	cat $FIFO | tee /dev/stderr | bash
-	#echo command done.
-done
+ echo To submit commands, run this again from elsewhere.
+ while true; do
+   cat $FIFO | tee /dev/stderr | bash
+   #echo command done.
+ done
 
 else
 
