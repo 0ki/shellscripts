@@ -4,6 +4,8 @@ bad=$(( $$ + 1 ))
 PID=$(pgrep -x shqueue |grep -v "^$bad$" |grep -vE "^$$$" )
 if [ -z "$PID" ]; then
 
+[ ! -z "$1" ] && echo Main program not running. Please start with no parameters && exit 0
+
 function exitf {
  rm $FIFO
 }
@@ -19,13 +21,18 @@ set +e
 echo To submit commands, run this again from elsewhere.
 while true; do
 	cat $FIFO | tee /dev/stderr | bash
-	echo pipe gone, restarting
+	#echo command done.
 done
 
 else
+
+ [ ! -z "$1" ] && pre="$* " || pre=""
+
  FI=/tmp/sq$PID
- [ ! -p "$FI" ] && echo not a pipe && exit
+ [ ! -p "$FI" ] && echo not a pipe, close all shqueue instances and start again. && exit
  echo Enter bash commands one per line. ^D to finish
- cat > $FI
+ while read -p "$pre" -r l; do
+   echo "${pre}${l}" > $FI
+ done
 fi
 

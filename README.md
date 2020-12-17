@@ -28,7 +28,7 @@ This section is included because it may be impossible to understand what some of
 * `rir2nmap` converts whois inetnum/NetRange/etc. output (e.g. "8.0.0.0 - 8.127.255.255") to format that nmap can take as a parameter (e.g. 8-8.0-127.0-255.0-255)
 * `selcol <n1,n2,n3>` prints only selected columns (alias for awk '{print $n1,$n2,$n3}')
 * `sftp-once [params] [user@]<host>` makes sftp connection to host without verifying or saving keys
-* `shqueue` asynchronously executes long-running shell commands one-by-one; first instance will become the server, the others will be clients
+* `shqueue` asynchronously executes long-running shell commands one-by-one; first instance will become the server, the others will be clients (`shqueue [commandprefix]`)
 * `skiprows <n>` skip first n rows
 * `sortuniq [-c]` much faster (to my own surprise) replacement for `sort | uniq`; removes duplicate lines without actually sorting them
 * `ssh-once  [params] [user@]<host>` makes ssh connection to host without verifying or saving keys
