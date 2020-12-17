@@ -11,14 +11,15 @@ This section is included because it may be impossible to understand what some of
 * `aslr-off <command>` launches command with ASLR disabled
 * `awkrc` swaps first and second column (and removes the rest)
 * `awksum [n]` outputs the decimal sum of first column (or n<sup>th</sup>) column
+* `collage <images>` joins images side-by-side preserving original resolution
 * `deflate` inflates deflated content
 * `htmlentitydecode` decodes HTML entities
 * `json2csv` converts json input to csv output
 * `melodyping [params] <dest>` pings dest and produces a sound on every packet received (pitch is latency depenedent)
 * `melodywatch <command>` watch command and procude audible alert when output changes
-* `mountvdi` mount and unmount vdi images
+* `mountvdi <file.vdi>` mount and unmount vdi images
 * `onlyascii` filter out non-printable characters
-* `paths2fs` convert list of paths (e.g. find output) to actual filesystem
+* `paths2fs <basedir>` convert list of paths (e.g. find output) to actual filesystem
 * `pdf2image <file.pdf> [out.pdf]` 'print-and-scan' file.pdf document, save as out.pdf; pauses in the middle so edits can be done if needed
 * `pdfbooklet <file.pdf>` prepares file.pdf to be printed as a book (two-sided); BOOK1-file.pdf is to be printed on one side and BOOK2-file.pdf on the other side of the paper stack
 * `pdf.clear-meta <file.pdf>` removes metadata from file.pdf overwriting it
@@ -34,6 +35,7 @@ This section is included because it may be impossible to understand what some of
 * `ssh-once  [params] [user@]<host>` makes ssh connection to host without verifying or saving keys
 * `ssh-once-legacy [params] [user@]<host>` makes ssh connection to host without verifying or saving keys; supports obsolete algorithms
 * `striptags` removes HTML tags
+* `tar.nometa [params]` creates a tar archive without any metadata
 * `toplines [-n]` show most prevalent lines and their count; prints top n lines
 * `unbuffer <command>` disables output buffering for commands that can't do that natively
 * `urldecode` decodes URL encoded characters (RFC3986)
