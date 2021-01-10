@@ -1,0 +1,86 @@
+#!/bin/bash
+#(C) Kirils Solovjovs, 2021
+scale=60
+scaletext="min"
+
+
+precisehit=1
+target=0
+mmm='^[0-9]+$'
+if [[ "$1" =~ $mmm ]] ; then
+ target="$1"
+ precisehit=0
+ shift
+elif [[ "${1::-1}" =~ $mmm ]] && [[ "${1: -1}" == "!" ]] ; then
+ target="${1::-1}"
+ precisehit=1
+ shift
+fi
+
+n=5
+command="$@"
+
+before="$(echo "$command" | /bin/bash | head -1 |tr -dc 0-9,.-)"
+[ "$before" == "" ] && before=0
+started="$before"
+while true; do
+ echo  ... measuring ${n}s ...
+ sleep $n
+ after="$(echo "$command" | /bin/bash | head -1 |tr -dc 0-9,.-)"
+ [ "$after" == "" ] && after=0
+ clear
+
+ difference=$(( $after - $before ))
+ speed=$((100000 * $difference*$scale/$n ))
+ printf %+.2f\ items/"$scaletext"\\n "$((speed))e-5"
+
+ [ "$difference" -gt "$target" ] && [ "$speed" -lt 0 ] && remaining="NONE"
+
+ remaining=$(( $target - $after ))
+ if [ "$speed" -eq 0 ]; then
+  eta="NONE"
+ else
+  eta=$(( 100000 * 10 * $remaining / $speed ))
+  [ "$eta" -lt 0 ] && eta="NONE"
+ fi
+
+ [ "$difference" -lt 0 ] && difference=$(( -($difference) ))
+ if [ "$difference" -ne 0 ]; then #if there is no change we dont know if its slow or not
+  if [ "$difference" -le 20 ]; then #these numbers ...
+   n=$((n+5))
+  elif [ "$difference" -gt 40 ]; then # .. will need some math
+   n=$((n-1))
+   [ "$n" -le 0 ] && n=1
+  fi
+ fi
+
+ [ "$speed" -lt 0 ] && remaining=$(( -($remaining) ))
+
+ echo Items: $after/$target
+ if [ "$speed" -ne 0 ]; then
+  echo -n "To go: $remaining items, "
+  if [ "$eta" == "NONE" ]; then
+   echo - $scaletext
+  else
+   printf %.1f\ "$scaletext"\\n "$((eta))e-1"
+  fi
+ else
+  echo To go: -stalled-
+ fi
+
+# echo Started with: $started
+
+ if [ "$remaining" -eq 0 ]; then
+  echo
+  echo Exact target reached.
+  exit 0
+ fi
+
+ if [ "$remaining" -le 0 -a "$precisehit" == "0" -a "$speed" -ne 0 ]; then
+  echo
+  echo Target reached.
+  exit 0
+ fi
+
+ before="$after"
+done

@@ -39,5 +39,6 @@ This section is included because it may be impossible to understand what some of
 * `toplines [-n]` show most prevalent lines and their count; prints top n lines
 * `unbuffer <command>` disables output buffering for commands that can't do that natively
 * `urldecode` decodes URL encoded characters (RFC3986)
+* `vprogress [target[!]] <command>` shows remaining time until command output reaches zero (or target number); use target! for exact match command is run periodically and must return a single integer
 * `xargs1 [options] <command>` executes command with parameters taken from input; alias for `xargs -L1`
 * `xident` prints the most useful info about an X window selected with your mouse
