@@ -20,13 +20,13 @@ fi
 n=5
 command="$@"
 
-before="$(echo "$command" | /bin/bash | head -1 |tr -dc 0-9,.-)"
+before="$(echo "$command" | /bin/bash | head -1 | tr -dc 0-9.- | cut -d . -f 1)"
 [ "$before" == "" ] && before=0
 started="$before"
 while true; do
  echo  ... measuring ${n}s ...
  sleep $n
- after="$(echo "$command" | /bin/bash | head -1 |tr -dc 0-9,.-)"
+ after="$(echo "$command" | /bin/bash | head -1 | tr -dc 0-9.- | cut -d . -f 1)"
  [ "$after" == "" ] && after=0
  clear
 
