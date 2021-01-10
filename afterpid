@@ -9,5 +9,5 @@ echo "Waiting for PID to stop before executing."
 while [ ! -z "$(ps -o pid= "$pid")" ]; do
 	sleep 1
 done
-$*
+"$@"
 

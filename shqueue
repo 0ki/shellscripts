@@ -26,12 +26,13 @@ if [ -z "$PID" ]; then
 
 else
 
- [ ! -z "$1" ] && pre="$* " || pre=""
+ [ ! -z "$1" ] && pre="${*@Q} " || pre=""
+ [ ! -z "$1" ] && ppre="$* " || pre=""
 
  FI=/tmp/sq$PID
  [ ! -p "$FI" ] && echo not a pipe, close all shqueue instances and start again. && exit
  echo Enter bash commands one per line. ^D to finish
- while read -p "$pre" -r l; do
+ while read -p "$ppre" -r l; do
    echo "${pre}${l}" > $FI
  done
 fi

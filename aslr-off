@@ -1,2 +1,2 @@
 #!/bin/bash
-setarch `uname -m` -R $*
+setarch `uname -m` -R "$@"

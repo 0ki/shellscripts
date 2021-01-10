@@ -1,6 +1,9 @@
 #!/bin/sh
-[ -z "$*" ] && ( tar ; exit 0 )
-tar c $* \
+if [ -z "$*" ]; then
+ tar
+ exit 0
+fi
+tar "$@" \
  --format=v7 \
  --numeric-owner \
  --owner=0 \

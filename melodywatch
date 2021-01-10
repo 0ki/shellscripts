@@ -1,17 +1,17 @@
 #!/bin/bash
 delay=30
-
+#Remember to double quote and expand the spaces!
 [ -z "$1" ] && echo Usage: $0 command to monitor && exit 1
 
-answer="$(echo $* | /bin/bash)"
+answer="$(echo "$@" | /bin/bash)"
 current="$answer"
 
-echo "Monitoring command $* for change"
+echo "Monitoring command \"$@\" for change"
 echo "$answer"
 
 while [ "$current" == "$answer" ]; do
 	sleep $delay
-	current="$(echo $* | /bin/bash)"
+	current="$(echo "$@" | /bin/bash)"
 done
 
 diff <(echo "$answer") <(echo "$current")

@@ -1,2 +1,2 @@
 #!/bin/sh
-xargs -L1 $*
+xargs -L1 "$@"
