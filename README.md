@@ -15,8 +15,9 @@ This section is included because it may be impossible to understand what some of
 * `base64clipboard [file]` copies a file to clipboard for transfer to remote server via base64
 * `collage <images>` joins images side-by-side preserving original resolution
 * `collage.v <images>` joins images vertically preserving original resolution
-* `inflate` inflates deflated content
+* `deflate` deflates content
 * `htmlentitydecode` decodes HTML entities
+* `inflate` inflates deflated content
 * `json2csv` converts json input to csv output
 * `melodyping [params] <dest>` pings dest and produces a sound on every packet received (pitch is latency depenedent)
 * `melodywatch <command>` watch command and procude audible alert when output changes

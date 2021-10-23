@@ -1,0 +1,3 @@
+#!/usr/bin/php
+<?php
+echo gzdeflate(file_get_contents('php://stdin'));
