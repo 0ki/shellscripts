@@ -7,12 +7,15 @@ Most of them are just a verbatim dump of what I'm using on my system(s). Simply 
 
 ## List of scripts and what they do
 This section is included because it may be impossible to understand what some of they do by simply looking at them.
+* `2pdf <files ..>` converts office files to pdf
 * `afterpid <pid> <command>` executed the command after the specified process has terminated
 * `aslr-off <command>` launches command with ASLR disabled
 * `awkrc` swaps first and second column (and removes the rest)
 * `awksum [n [g1 g2 ...]]` outputs the decimal sum of first column (or n<sup>th</sup>) column grouping them by columns g1 and g2 and ...
+* `base64clipboard [file]` copies a file to clipboard for transfer to remote server via base64
 * `collage <images>` joins images side-by-side preserving original resolution
-* `deflate` inflates deflated content
+* `collage.v <images>` joins images vertically preserving original resolution
+* `inflate` inflates deflated content
 * `htmlentitydecode` decodes HTML entities
 * `json2csv` converts json input to csv output
 * `melodyping [params] <dest>` pings dest and produces a sound on every packet received (pitch is latency depenedent)
@@ -37,8 +40,10 @@ This section is included because it may be impossible to understand what some of
 * `striptags` removes HTML tags
 * `tar.nometa [params]` creates a tar archive without any metadata
 * `toplines [-n]` show most prevalent lines and their count; prints top n lines
+* `trimn` removes trailing newline(s) from input
 * `unbuffer <command>` disables output buffering for commands that can't do that natively
 * `urldecode` decodes URL encoded characters (RFC3986)
+* `urlencode` URL encodes characters (RFC3986)
 * `vprogress [target[!]] <command>` shows remaining time until command output reaches zero (or target number); use target! for exact match command is run periodically and must return a single integer
 * `xargs1 [options] <command>` executes command with parameters taken from input; alias for `xargs -L1`
 * `xident` prints the most useful info about an X window selected with your mouse

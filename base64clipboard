@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+ base64 | xclip -selection clipboard
+else
+ cat "$1" | base64 | xclip -selection clipboard
+fi
+
+echo "'base64 -d > file' to recreate"
