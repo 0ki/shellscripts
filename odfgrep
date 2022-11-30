@@ -18,7 +18,7 @@ shift
 
 for file in "$@"; do
   if [ ! -r "$file" ]; then
-    echo "odtgrep: $file: File not found"
+    echo "odfgrep: $file: File not found"
     continue
   fi
 	unzip -ca "$file" content.xml | grep -ql $flags "$term"
