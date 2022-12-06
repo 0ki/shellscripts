@@ -22,6 +22,7 @@ This section is included because it may be impossible to understand what some of
 * `melodyping [params] <dest>` pings dest and produces a sound on every packet received (pitch is latency depenedent)
 * `melodywatch <command>` watch command and procude audible alert when output changes
 * `mountvdi <file.vdi>` mount and unmount vdi images
+* `odfgrep <string> <files ..>` identifies ODF files that contain the string
 * `onlyascii` filter out non-printable characters
 * `paths2fs <basedir>` convert list of paths (e.g. find output) to actual filesystem
 * `pdf2image <file.pdf> [out.pdf]` 'print-and-scan' file.pdf document, save as out.pdf; pauses in the middle so edits can be done if needed
