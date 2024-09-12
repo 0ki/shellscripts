@@ -1,0 +1,16 @@
+#!/bin/bash
+base="FILL-$$-$RANDOM"
+x=0
+
+df .
+echo Filling up `pwd`...
+
+while true; do
+ x=$(( $x + 1 ))
+ dd if=/dev/urandom bs=1024 count=4194304 status=progress of="$base.$x"
+ [ -z $? ] && break
+done
+
+echo Disk seems full. Or not. See for yourself:
+df .
+
