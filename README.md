@@ -44,6 +44,7 @@ This section is included because it may be impossible to understand what some of
 * `striptags` removes HTML tags
 * `tar.nometa [params]` creates a tar archive without any metadata
 * `toplines [-n]` show most prevalent lines and their count; prints top n lines
+* `transpose` transposes IFS separated table
 * `trimn` removes trailing newline(s) from input
 * `unbuffer <command>` disables output buffering for commands that can't do that natively
 * `urldecode` decodes URL encoded characters (RFC3986)

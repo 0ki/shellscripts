@@ -1,0 +1,17 @@
+#!/bin/bash
+awk '
+{
+    for (i = 1; i <= NF; i++) {
+        matrix[i, NR] = $i
+    }
+    rows = NR
+    cols = NF
+}
+END {
+    for (i = 1; i <= cols; i++) {
+        for (j = 1; j <= rows; j++) {
+            printf "%s ", matrix[i, j]
+        }
+        print ""
+    }
+}'
