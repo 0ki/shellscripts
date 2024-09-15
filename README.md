@@ -12,6 +12,7 @@ This section is included because it may be impossible to understand what some of
 * `aslr-off <command>` launches command with ASLR disabled
 * `awkrc` swaps first and second column (and removes the rest)
 * `awksum [n [g1 g2 ...]]` outputs the decimal sum of first column (or n<sup>th</sup>) column grouping them by columns g1 and g2 and ...
+* `awksumtable` outputs the decimal sum of all the columns
 * `base64clipboard [file]` copies a file to clipboard for transfer to remote server via base64
 * `collage <images>` joins images side-by-side preserving original resolution
 * `collage.v <images>` joins images vertically preserving original resolution
