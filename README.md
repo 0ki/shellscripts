@@ -17,6 +17,7 @@ This section is included because it may be impossible to understand what some of
 * `collage <images>` joins images side-by-side preserving original resolution
 * `collage.v <images>` joins images vertically preserving original resolution
 * `deflate` deflates content
+* `diffsort <file1> <file2>` diff two files, but sort them before diffing 
 * `filldisk` fills the current directory with randomized 4GiB files
 * `htmlentitydecode` decodes HTML entities
 * `inflate` inflates deflated content
