@@ -1,0 +1,4 @@
+#!/bin/bash
+[ -z "$1" ] && n=1 || n=$1
+
+awk '{if($'$n'!=""){x=x+$'$n';c=c+1}} END {print x/c}'

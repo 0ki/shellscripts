@@ -10,14 +10,16 @@ This section is included because it may be impossible to understand what some of
 * `2pdf <files ..>` converts office files to pdf
 * `afterpid <pid> <command>` executed the command after the specified process has terminated
 * `aslr-off <command>` launches command with ASLR disabled
+* `awkavg [n]` calculates the math average of a column
 * `awkrc` swaps first and second column (and removes the rest)
 * `awksum [n [g1 g2 ...]]` outputs the decimal sum of first column (or n<sup>th</sup>) column grouping them by columns g1 and g2 and ...
 * `awksumtable` outputs the decimal sum of all the columns
 * `base64clipboard [file]` copies a file to clipboard for transfer to remote server via base64
+* `binwalk-all [params]` tells binwalk to find (and potentially extract) every known file type
 * `collage <images>` joins images side-by-side preserving original resolution
 * `collage.v <images>` joins images vertically preserving original resolution
 * `deflate` deflates content
-* `diffsort <file1> <file2>` diff two files, but sort them before diffing 
+* `diffsort <file1> <file2>` diff two files, but sort them before diffing
 * `filldisk` fills the current directory with randomized 4GiB files
 * `htmlentitydecode` decodes HTML entities
 * `inflate` inflates deflated content
