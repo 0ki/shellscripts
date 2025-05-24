@@ -19,8 +19,8 @@ echo ALERT: CHANGE DETECTED
 
 while [ true ] ; do
 	for((x=0;x<10;x++)); do
-		play -q -n -t alsa synth 0.2 sin 1000
-		play -q -n -t alsa synth 0.2 sin 500
+		play -q -n synth 0.2 sin 1000
+		play -q -n synth 0.2 sin 500
 	done
 	sleep $delay
 done

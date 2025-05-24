@@ -25,6 +25,7 @@ This section is included because it may be impossible to understand what some of
 * `inflate` inflates deflated content
 * `json2csv` converts json input to csv output
 * `melodyping [params] <dest>` pings dest and produces a sound on every packet received (pitch is latency depenedent)
+* `melodyping.inverse [params] <dest>` pings dest and produces a sound on every timeout
 * `melodywatch <command>` watch command and procude audible alert when output changes
 * `mountvdi <file.vdi>` mount and unmount vdi images
 * `odfgrep <string> <files ..>` identifies ODF files that contain the string

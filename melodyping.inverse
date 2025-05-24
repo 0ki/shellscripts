@@ -1,0 +1,17 @@
+#!/bin/bash
+start=0
+while true; do
+	while true; do
+		[[ "$(date +%s)" != "$start" ]] && break
+		sleep 0.1
+	done
+		echo -n "$(date): ping $@ "
+		if ping -c1 -W1 "$@" > /dev/null; then
+			echo "OK"
+		else
+			echo "TIMEOUT"
+			play -q -n synth 0.3 sin 400 sin 410 sin 420 2> /dev/null
+		fi
+	start=$(date +%s)
+done
+
