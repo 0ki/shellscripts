@@ -14,7 +14,7 @@ while true; do
 	[ "$pnt" == "$npnt" ] && continue
 	[ -z "$npnt" ] && continue
 	[ ! -f "$npnt" ] && echo $npnt does not exist. skipping. && continue
-	rm $b
-	ln -s $npnt $b
-	echo $b now points to $npnt
+	rm "$b"
+	ln -s "$npnt" "$b"
+	echo "$b now points to $npnt"
 done
