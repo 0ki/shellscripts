@@ -8,6 +8,7 @@ Most of them are just a verbatim dump of what I'm using on my system(s). Simply 
 ## List of scripts and what they do
 This section is included because it may be impossible to understand what some of they do by simply looking at them.
 * `<command1> | \# <whatever> | <command2>` comment out a command in the middle of a pipeline
+* `2csv <files ..>` converts spreadsheets to csv
 * `2pdf <files ..>` converts office files to pdf
 * `afterpid <pid> <command>` executed the command after the specified process has terminated
 * `aslr-off <command>` launches command with ASLR disabled
