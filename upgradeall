@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -e
+
+RED='\e[31m'
+GREEN='\e[32m'
+YELLOW='\e[33m'
+BLUE='\e[34m'
+RESET='\e[0m'
+
+if [ "$EUID" -ne 0 ]; then
+  echo -e "${RED}Please run this script as root or using sudo.${RESET}"
+  exit 1
+fi
+
+echo -e "${BLUE}Updating package lists...${RESET}"
+apt update
+
+deferred_packages=$(
+  apt upgrade 2>/dev/null | awk '
+    /The following upgrades have been deferred/ \
+     || /The following packages have been kept back/ { flag=1; next }
+    flag && /^[0-9]+ upgraded,/       { flag=0 }
+    flag && NF                        { print }
+  '
+)
+
+deferred_packages=$(echo "$deferred_packages" \
+  | tr -s '[:space:]' ' '                     \
+  | sed 's/^ *//;s/ *$//'                     \
+  | tr ' ' '\n' | sort -u | tr '\n' ' '       \
+)
+
+if [ -z "$deferred_packages" ]; then
+  echo -e "${GREEN}No deferred or kept-back packages found.${RESET}"
+  exit 0
+fi
+
+echo -e "${YELLOW}The following deferred packages will be installed:${RESET}"
+echo -e "${YELLOW}$deferred_packages${RESET}"
+
+echo -e "${BLUE}Installing packages: $deferred_packages...${RESET}"
+apt-get --with-new-pkgs upgrade -y $deferred_packages
+echo -e "${GREEN}Installation complete.${RESET}"
