@@ -1,8 +1,7 @@
 #!/usr/bin/php
 <?php
-$in=fopen('php://stdin',"r");
 $d=array();
-while($z=fgets($in))
+while($z=fgets(STDIN))
 	 @$d[$z]++;
 
 ob_start(null, 100000);
